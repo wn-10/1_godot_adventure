@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck6qh4lim5vqf"]
+
+[ext_resource type="Script" uid="uid://0y567fn3bmnb" path="res://scripts/scene_entrance/scene_entrance.gd" id="1_tyhpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ducuf"]
+size = Vector2(16, 16)
+
+[node name="SceneEntrance" type="Area2D"]
+script = ExtResource("1_tyhpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ducuf")
+debug_color = Color(0, 0, 0.701961, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

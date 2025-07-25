@@ -3,10 +3,6 @@
 [ext_resource type="Script" uid="uid://bh146yenj4r3n" path="res://scripts/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://c0lv1mxfjxmwp" path="res://assets/Actor/Characters/NinjaRed2/SeparateAnim/Walk.png" id="2_dovo2"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
-radius = 6.0
-height = 16.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_gmlin"]
 atlas = ExtResource("2_dovo2")
 region = Rect2(0, 0, 16, 16)
@@ -142,14 +138,20 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dovo2"]
+radius = 0.265124
+height = 1.56368
+
 [node name="Player" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_dovo2")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_dovo2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lgqa7")
 animation = &"move_down"
 frame_progress = 0.0201515
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+scale = Vector2(15.0873, 2.55807)
+shape = SubResource("CapsuleShape2D_dovo2")
