@@ -143,8 +143,12 @@ radius = 0.265124
 height = 1.56368
 
 [node name="Player" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_dovo2")
+move_speed = 50.0
+push_strength = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lgqa7")

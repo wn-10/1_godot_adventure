@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=3 uid="uid://bdmyybvp0y065"]
+
+[ext_resource type="Script" uid="uid://niscul4gpsqv" path="res://scripts/puzzle_button/puzzle_button.gd" id="1_m3m81"]
+[ext_resource type="Texture2D" uid="uid://bth3ftuccf0t" path="res://assets/Backgrounds/Tilesets/TilesetDungeon.png" id="2_86iaq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b3ixx"]
+size = Vector2(14, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yunl"]
+atlas = ExtResource("2_86iaq")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwmkc"]
+atlas = ExtResource("2_86iaq")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dru0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yunl")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gwmkc")
+}],
+"loop": true,
+"name": &"unpressed",
+"speed": 5.0
+}]
+
+[node name="PuzzleButton" type="Area2D"]
+collision_layer = 4
+collision_mask = 14
+script = ExtResource("1_m3m81")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_b3ixx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dru0e")
+animation = &"unpressed"
+autoplay = "unpressed"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
